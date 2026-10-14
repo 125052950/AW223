@@ -1,6 +1,8 @@
+/* 
+
 document.addEventListener("DOMContentLoaded", () => {
     
- /* Cambiar el html desde js */
+ Cambiar el html desde js 
     const header = document.querySelector("header");
     if (header) {
         const textoBienvenida = header.querySelector("p") || header.querySelector("h2");
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         header.appendChild(btnCambiarMensaje);
     }
 
-/* Cambiar el css desde js */
+Cambiar el css desde js 
 
     const seccionHabilidades = document.querySelector(".lista-habilidades");
     
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         seccionHabilidades.appendChild(btnTipografia);
     }
 
-/* Validar campos con alert */
+ Validar campos con alert 
 
     const formulario = document.querySelector("form");
     
@@ -74,4 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
             formulario.reset();
         });
     }
-});
+}); */

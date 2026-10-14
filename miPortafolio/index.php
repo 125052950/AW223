@@ -38,7 +38,7 @@
     <section id="sobre-mi">
         <h2>Sobre mi</h2>
         <div class="sobre-mi-contenido">
-            <img src="Who are you.png" alt="Foto de Kevin Piña">
+            <img src="./img/Who are you.png" alt="Foto de Kevin Piña">
             <div>
                 <p>Soy un estudiante de TIID con interés en el desarrollo de aplicaciones web.</p>
                 <p>En esta practica estoy aprendiendo HTML y CSS</p>
@@ -79,18 +79,34 @@
     <!-- Sección de contacto -->
     <section id="contacto">
         <h2>Contactame</h2>
-        <form action="">
+        <form  id="formulario" action="guardar_mensaje.php" method="post">
             <div class="campo">
-                <label for="">Nombre:</label>
-                <input type="text">
+                <label for="nombre">Nombre:</label>
+                <input 
+                    type="text"
+                    id="nombre"
+                    name="txtNombre"
+                    placeholder="Ingresa tu nombre"
+                    required
+                >
             </div>
             <div class="campo">
-                <label for="">Correo electrónico:</label>
-                <input type="email">
+                <label for="email">Correo electrónico:</label>
+                <input 
+                    type="email"
+                    id="correo"
+                    name="txtCorreo"
+                    placeholder="Ingresa tu correo electrónico"
+                >
             </div>
             <div class="campo">
-                <label for="">Mensaje:</label>
-                <textarea rows="5"></textarea>
+                <label for="mensaje">Mensaje:</label>
+                <textarea 
+                    id="mensaje"
+                    name="txtMensaje"
+                    placeholder="Escribe tu mensaje"
+                    rows="5"
+                ></textarea>
             </div>
 
             <button type="submit">Enviar Mensaje</button>

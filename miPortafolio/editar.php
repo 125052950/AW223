@@ -180,7 +180,7 @@
         <a href="admin.php" title="Regresar a Zona Administración">
             <i class="fa-solid fa-rotate-left"></i>
         </a>
-        <a href="index.html" title="Regresar al Portafolio">
+        <a href="index.php" title="Regresar al Portafolio">
             <i class="fa-solid fa-house"></i>
         </a>
     </nav>

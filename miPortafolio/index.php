@@ -119,6 +119,6 @@
         <p>Práctica de programación Web todos los derechos reservados</p>
     </footer>
 
-    <script src="./js/main.js"></script>
+    <script src="js/AlertInsert.js"></script>
 </body>
 </html>

@@ -182,42 +182,35 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Mensaje</th>
+                            <th>Fecha</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ana</td>
-                            <td>ana@example.com</td>
-                            <td>Hola, me interesa tu portafolio.</td>
-                            <td class="action-options">
-                                <a href="editar.php?id=1" title="Editar mensaje" class="btn-action edit">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </a>
-                                <a href="#" title="Borrar mensaje" class="btn-action delete">
-                                    <i class="fa-regular fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>José</td>
-                            <td>jose@example.com</td>
-                            <td>Quisiera más información sobre tus proyectos.</td>
-                            <td class="action-options">
-                                <a href="editar.php?id=2" title="Editar mensaje" class="btn-action edit">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </a>
-                                <a href="#" title="Borrar mensaje" class="btn-action delete">
-                                    <i class="fa-regular fa-trash-can"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php
+                        
+                        require 'consulta_mensajes.php';
+                        $rsMensajes = consultaMensajes();
+                        while($arrMensaje = mysqli_fetch_array($rsMensajes)){
+                            echo "<tr>
+                                <td>".$arrMensaje['nombre']."</td>
+                                <td>".$arrMensaje['correo']."</td>
+                                <td>".$arrMensaje['mensaje']."</td>
+                                <td>".$arrMensaje['timeStamps']."</td>
+                                <td class='action-options'>
+                                    <a href='editar.php?id=1' title='Editar mensaje' class='btn-action edit'>
+                                        <i class='fa-regular fa-pen-to-square'></i>
+                                    </a>
+                                    <a href='#' title='Borrar mensaje' class='btn-action delete'>
+                                        <i class='fa-regular fa-trash-can'></i>
+                                    </a>
+                                </td>
+                            </tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

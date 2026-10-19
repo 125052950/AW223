@@ -190,24 +190,38 @@
         <div class="admin-card form-card">
             <h2>Editar Mensaje</h2>
             
-            <form action="admin.php" method="POST" class="edit-form">
+            <?php
+
+            echo ""
+            <form action="actualizar_mensaje.php" method="POST" class="edit-form">
+
+                require 'consulta_mensajes.php';
+                $rsMensajes = consultaMensajes();
+                while($arrMensaje = mysqli_fetch_array($rsMensajes)){
+
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre de ejemplo" required>
+                    <input 
+                    type="text"
+                    id="nombre" 
+                    name="txtNombre" value = "<?php echo $arrMensaje['nombre'] ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                    <input type="email" id="correo" name="txtCorreo" placeholder="ejemplo@correo.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                    <textarea id="mensaje" name="txtMensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Actualizar Mensaje</button>
+
             </form>
+                }
+            ?>
         </div>
     </main>
 

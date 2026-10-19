@@ -97,6 +97,7 @@
                     id="correo"
                     name="txtCorreo"
                     placeholder="Ingresa tu correo electrónico"
+                    required
                 >
             </div>
             <div class="campo">
@@ -106,6 +107,7 @@
                     name="txtMensaje"
                     placeholder="Escribe tu mensaje"
                     rows="5"
+                    required
                 ></textarea>
             </div>
 

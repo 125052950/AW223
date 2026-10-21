@@ -1,8 +1,7 @@
-/* 
 
 document.addEventListener("DOMContentLoaded", () => {
     
- Cambiar el html desde js 
+//Cambiar el html desde js 
     const header = document.querySelector("header");
     if (header) {
         const textoBienvenida = header.querySelector("p") || header.querySelector("h2");
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         header.appendChild(btnCambiarMensaje);
     }
 
-Cambiar el css desde js 
+//Cambiar el css desde js 
 
     const seccionHabilidades = document.querySelector(".lista-habilidades");
     
@@ -48,32 +47,4 @@ Cambiar el css desde js
         seccionHabilidades.appendChild(btnColor);
         seccionHabilidades.appendChild(btnTipografia);
     }
-
- Validar campos con alert 
-
-    const formulario = document.querySelector("form");
-    
-    if (formulario) {
-        formulario.addEventListener("submit", (evento) => {
-            evento.preventDefault(); 
-
-            const inputNombre = formulario.querySelectorAll('input')[0];
-            const inputCorreo = formulario.querySelectorAll('input')[1];
-
-            if (!inputNombre || !inputNombre.value.trim()) {
-                alert("Por favor, escribe tu nombre");
-                if (inputNombre) inputNombre.focus();
-                return;
-            }
-
-            if (!inputCorreo || !inputCorreo.value.trim()) {
-                alert("El correo es obligatorio");
-                if (inputCorreo) inputCorreo.focus();
-                return;
-            }
-
-            alert("Formulario enviado correctamente");
-            formulario.reset();
-        });
-    }
-}); */
+}); 

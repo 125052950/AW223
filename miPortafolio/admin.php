@@ -201,10 +201,10 @@
                                 <td>".$arrMensaje['mensaje']."</td>
                                 <td>".$arrMensaje['timeStamps']."</td>
                                 <td class='action-options'>
-                                    <a href='editar.php?id=1' title='Editar mensaje' class='btn-action edit'>
+                                    <a href='editar.php?id=".$arrMensaje['ID']."' title='Editar mensaje' class='btn-action edit'>
                                         <i class='fa-regular fa-pen-to-square'></i>
                                     </a>
-                                    <a href='#' title='Borrar mensaje' class='btn-action delete'>
+                                    <a href='borrar.php?id=".$arrMensaje['ID']."' title='Borrar mensaje' class='btn-action delete' onclick=\"return confirm('Estas seguro de borrar este mensaje');\">
                                         <i class='fa-regular fa-trash-can'></i>
                                     </a>
                                 </td>
@@ -222,5 +222,8 @@
         <p>&copy; 2025 Mi Portafolio</p>
         <p>Práctica de Programación Web</p>
     </footer>
+
+    <script src="js/AlertUpdate.js"></script>
+    <script src="js/AlertDelete.js"></script>
 </body>
 </html>

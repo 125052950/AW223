@@ -1,18 +1,22 @@
 <?php
     require_once("conexion.php");
 
-    $nombre = $_POST['txtNombre'];
-    $correo = $_POST['txtCorreo'];
-    $mensaje = $_POST['txtMensaje'];
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    $mensaje = $_POST['mensaje'];
 
-    $sqlUpdate = "UPDATE mensajes SET (nombre, correo, mensaje) VALUES (?, ?, ?)";
+    $sqlUpdate = "UPDATE mensajes SET nombre = ?, correo = ?, mensaje = ? WHERE ID = ?";
 
     $stmt = $conexion->prepare($sqlUpdate);
-    $stmt->bind_param("sss", $nombre, $correo, $mensaje);
+    $stmt->bind_param("sssi", $nombre, $correo, $mensaje, $id);
 
     if ($stmt->execute()) {
-        header("Location: editar.php?estadophp=exito");
+        header("Location: admin.php?estadoActualizar=exitoActualizar");
     } else {
-        header("Location: editar.php?estadophp=error");
+        header("Location: admin.php?id=" . $id . "&estadoActualizar=errorActualizar");
     } 
+
+    $stmt->close();
+    $conexion->close();
 ?>

@@ -1,3 +1,26 @@
+<?php
+require_once("conexion.php");
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    
+    $query = "SELECT * FROM mensajes WHERE ID = ?";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    
+    if ($resultado->num_rows > 0) {
+        $datos_mensaje = $resultado->fetch_assoc();
+    } else {
+        die("Mensaje no encontrado.");
+    }
+    $stmt->close();
+} else {
+    header("Location: admin.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,9 +30,8 @@
     <link rel="stylesheet" href="./css/estilos.css">
     <!-- FontAwesome para los íconos de la interfaz -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
 
-<style>
+    <style>
         * {
             box-sizing: border-box;
             margin: 0;
@@ -166,6 +188,7 @@
             margin: 4px 0;
         }
     </style>
+</head>
 
 <body class="admin-body">
 
@@ -190,38 +213,29 @@
         <div class="admin-card form-card">
             <h2>Editar Mensaje</h2>
             
-            <?php
-
-            echo ""
+            <!-- Apuntamos el form a tu archivo actualizar_mensaje.php -->
             <form action="actualizar_mensaje.php" method="POST" class="edit-form">
-
-                require 'consulta_mensajes.php';
-                $rsMensajes = consultaMensajes();
-                while($arrMensaje = mysqli_fetch_array($rsMensajes)){
+                
+                <!-- Input oculto para enviar el ID exacto que se va a actualizar -->
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($datos_mensaje['ID']); ?>">
 
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input 
-                    type="text"
-                    id="nombre" 
-                    name="txtNombre" value = "<?php echo $arrMensaje['nombre'] ?>" required>
+                    <input type="text" id="nombre" name="nombre" required value="<?php echo htmlspecialchars($datos_mensaje['nombre']); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="txtCorreo" placeholder="ejemplo@correo.com" required>
+                    <input type="email" id="correo" name="correo" requried value="<?php echo htmlspecialchars($datos_mensaje['correo']); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="txtMensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="5" required><?php echo htmlspecialchars($datos_mensaje['mensaje']); ?></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Actualizar Mensaje</button>
-
             </form>
-                }
-            ?>
         </div>
     </main>
 

@@ -122,5 +122,6 @@
     </footer>
 
     <script src="js/AlertInsert.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

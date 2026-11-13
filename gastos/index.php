@@ -66,7 +66,7 @@
         </div>
     </main>
 
-
+    <script src="./js/AlertPagado.js"></script>
     <script src="./js/AlertInsert.js"></script>
 </body>
 </html>

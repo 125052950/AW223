@@ -29,7 +29,41 @@
                 <button type="submit">Registrar gasto</button>
             </div>
         </form>
-        
+        <div class="admin-card">
+            <h2>Listado de gastos</h2>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Categoria</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        require 'consulta_registro.php';
+                        $rsMensajes = consultaRegistros();
+                        while($arrMensaje = mysqli_fetch_array($rsMensajes)){
+                            echo "<tr>
+                                <td>".$arrMensaje['concepto']."</td>
+                                <td>".$arrMensaje['categoria']."</td>
+                                <td>".$arrMensaje['monto']."</td>
+                                <td>".$arrMensaje['fecha']."</td>
+                                <td>".$arrMensaje['pagado']."</td>
+                                <td class='action-options'>
+                                    <a href='marcar_completado.php?id=".$arrMensaje['id']."' class='btn-marcar'>Marcar Completado</a>
+                                </td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
 
